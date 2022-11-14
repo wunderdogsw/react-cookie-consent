@@ -170,7 +170,6 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
       declineButtonId,
       disableButtonStyles,
       enableDeclineButton,
-      flipButtons,
       ButtonComponent,
       overlay,
       overlayClasses,
@@ -294,16 +293,14 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
         {buttonText}
       </ButtonComponent>
     );
+
+    // TODO: Figure a better way for this
     buttonsToRender.sort((a, b) => {
       return (
         buttonOrder.indexOf((a.key || "").toString()) -
         buttonOrder.indexOf((b.key || "").toString())
       );
     });
-
-    if (flipButtons && buttonsToRender.length < 3) {
-      buttonsToRender.reverse();
-    }
 
     return (
       <ConditionalWrapper

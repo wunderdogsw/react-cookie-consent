@@ -37,7 +37,6 @@ export interface CookieConsentProps {
   ariaDeclineLabel: string;
   disableButtonStyles: boolean;
   enableDeclineButton: boolean;
-  flipButtons: boolean;
   cookieSecurity?: boolean;
   overlay: boolean;
   acceptOnOverlayClick: boolean;
@@ -98,8 +97,7 @@ export const defaultCookieConsentProps: CookieConsentProps = {
   declineButtonId: "rcc-decline-button",
   extraCookieOptions: {},
   disableButtonStyles: false,
-  enableDeclineButton: false,
-  flipButtons: false,
+  enableDeclineButton: true,
   sameSite: SAME_SITE_OPTIONS.LAX,
   ButtonComponent: DefaultButtonComponent,
   overlay: false,

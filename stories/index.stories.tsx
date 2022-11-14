@@ -27,7 +27,6 @@ Default.args = defaultStoryProps;
 export * from "./stories/acceptOnScroll.story";
 export * from "./stories/additionalButtons.story";
 export * from "./stories/customStyling.story";
-export * from "./stories/flippedButtons.story";
 export * from "./stories/muiButtons.story";
 export * from "./stories/onAccept.story";
 export * from "./stories/overlay.story";
