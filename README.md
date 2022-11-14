@@ -28,7 +28,7 @@ Demo (storybook): https://mastermindzh.github.io/react-cookie-consent/
     - [Changing the button font-weight to bold](#changing-the-button-font-weight-to-bold)
     - [Using predefined CSS classes](#using-predefined-css-classes)
     - [Accept on scroll](#accept-on-scroll)
-    - [Flipping the buttons](#flipping-the-buttons)
+    - [Reordering the buttons](#reordering-the-buttons)
     - [Extra cookie options](#extra-cookie-options)
     - [Rainbows!](#rainbows)
     - [Overlay](#overlay)
@@ -280,7 +280,7 @@ If you enable the manage Button button you can pass along the "buttonOrders" pro
 
 ```js
 <CookieConsent enableManageButton buttonOrder={["manageButton", "declineButton", "acceptButton"]}>
-  Flipped buttons
+  reordered buttons
 </CookieConsent>
 ```
 
