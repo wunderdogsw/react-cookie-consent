@@ -3,6 +3,7 @@ export interface CookieConsentState {
   style: React.CSSProperties;
   buttonStyle: React.CSSProperties;
   declineButtonStyle: React.CSSProperties;
+  manageButtonStyle: React.CSSProperties;
   contentStyle: React.CSSProperties;
   overlayStyle: React.CSSProperties;
 }
@@ -38,6 +39,17 @@ export const defaultState: CookieConsentState = {
     borderRadius: "0px",
     boxShadow: "none",
     color: "#e5e5e5",
+    cursor: "pointer",
+    flex: "0 0 auto",
+    padding: "5px 10px",
+    margin: "15px",
+  },
+  manageButtonStyle: {
+    background: "#000000",
+    border: "0",
+    borderRadius: "0px",
+    boxShadow: "none",
+    color: "#ffffff",
     cursor: "pointer",
     flex: "0 0 auto",
     padding: "5px 10px",

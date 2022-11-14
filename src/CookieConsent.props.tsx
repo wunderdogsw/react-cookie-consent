@@ -56,6 +56,14 @@ export interface CookieConsentProps {
   location: string;
   visible: string;
   sameSite: "strict" | "Strict" | "lax" | "Lax" | "none" | "None" | undefined;
+  manageButtonStyle: React.CSSProperties;
+  manageButtonText: string;
+  manageButtonId: string;
+  enableManageButton: boolean;
+  customManageButtonProps: Object;
+  manageButtonClasses: string;
+  buttonOrder: string[];
+  onManage: () => void;
 }
 
 const DefaultButtonComponent: FunctionComponent<{ children: ReactNode; [x: string]: any }> = ({
@@ -112,4 +120,12 @@ export const defaultCookieConsentProps: CookieConsentProps = {
   declineButtonStyle: {},
   contentStyle: {},
   overlayStyle: {},
+  manageButtonText: "Manage settings",
+  manageButtonId: "rcc-manage-button",
+  enableManageButton: false,
+  customManageButtonProps: {},
+  manageButtonClasses: "",
+  manageButtonStyle: {},
+  buttonOrder: ["manageButton", "declineButton", "acceptButton"],
+  onManage: () => {},
 };

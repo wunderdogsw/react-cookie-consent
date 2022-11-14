@@ -182,11 +182,19 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
       customButtonProps,
       customDeclineButtonProps,
       customButtonWrapperAttributes,
+      manageButtonStyle,
+      manageButtonText,
+      manageButtonId,
+      enableManageButton,
+      customManageButtonProps,
+      manageButtonClasses,
+      buttonOrder,
     } = this.props;
 
     let myStyle: CSSProperties = {};
     let myButtonStyle: CSSProperties = {};
     let myDeclineButtonStyle: CSSProperties = {};
+    let myManageButtonStyle: CSSProperties = {};
     let myContentStyle: CSSProperties = {};
     let myOverlayStyle: CSSProperties = {};
 
@@ -207,11 +215,16 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
       if (disableButtonStyles) {
         myButtonStyle = Object.assign({}, buttonStyle);
         myDeclineButtonStyle = Object.assign({}, declineButtonStyle);
+        myManageButtonStyle = Object.assign({}, manageButtonStyle);
       } else {
         myButtonStyle = Object.assign({}, { ...this.state.buttonStyle, ...buttonStyle });
         myDeclineButtonStyle = Object.assign(
           {},
           { ...this.state.declineButtonStyle, ...declineButtonStyle }
+        );
+        myManageButtonStyle = Object.assign(
+          {},
+          { ...this.state.manageButtonStyle, ...manageButtonStyle }
         );
       }
     }
@@ -228,6 +241,24 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
     }
 
     const buttonsToRender = [];
+
+    // add manage button
+    enableManageButton &&
+      buttonsToRender.push(
+        <ButtonComponent
+          key="manageButton"
+          style={myManageButtonStyle}
+          className={manageButtonClasses}
+          id={manageButtonId}
+          aria-label={ariaDeclineLabel}
+          onClick={() => {
+            this.props.onManage();
+          }}
+          {...customManageButtonProps}
+        >
+          {manageButtonText}
+        </ButtonComponent>
+      );
 
     // add decline button
     enableDeclineButton &&
@@ -263,8 +294,14 @@ export class CookieConsent extends Component<CookieConsentProps, CookieConsentSt
         {buttonText}
       </ButtonComponent>
     );
+    buttonsToRender.sort((a, b) => {
+      return (
+        buttonOrder.indexOf((a.key || "").toString()) -
+        buttonOrder.indexOf((b.key || "").toString())
+      );
+    });
 
-    if (flipButtons) {
+    if (flipButtons && buttonsToRender.length < 3) {
       buttonsToRender.reverse();
     }
 
